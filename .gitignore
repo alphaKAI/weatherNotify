@@ -1,0 +1,9 @@
+*.o
+*~
+*test*
+*sample*
+*.swp
+primary_area.xml
+main
+rssTools
+jsonTools
