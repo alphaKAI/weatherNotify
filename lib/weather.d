@@ -19,13 +19,13 @@ import std.algorithm,
        std.conv,
        std.xml;
 
-import lib.rssTools;
-import lib.jsonTools;
+import lib.rssTools,
+       lib.jsonTools;
 
 class Weather{
   RSSTools  rt = new RSSTools;
   jsonTools jt = new jsonTools;
-  string defineFilePath = "../resource/primary_area.xml"; 
+  string defineFilePath = "./resource/primary_area.xml"; 
   string[string][string] prefs;
   __gshared immutable rssUrl  = "http://weather.livedoor.com/forecast/rss/primary_area.xml";
   __gshared immutable baseUrl = "http://weather.livedoor.com/forecast/webservice/json/v1?city=";
@@ -64,7 +64,7 @@ class Weather{
 
   string getWeather(string pref, string city){
     auto parsed = parseJSON(get(baseUrl ~ prefs[pref][city]));
-    string returnString = jt.getJsonData(parsed.object["description"], "test").split("\\n").map!(x => x ~= "\n").join.to!string;
+    string returnString = jt.getJsonData(parsed.object["description"], "text").split("\\n").map!(x => x ~= "\n").join.to!string;
 
     return returnString;
   }

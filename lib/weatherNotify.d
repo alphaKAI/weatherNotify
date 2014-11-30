@@ -17,6 +17,8 @@ class weatherNotify{
 
   string sendNotify(string pref, string city){
     string returnString = weather.getWeather(pref, city);
-     return returnString;
+    import std.stdio;
+    returnString.writeln;
+    return returnString;
   }
 }
